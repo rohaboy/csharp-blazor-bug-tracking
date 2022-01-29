@@ -1,0 +1,41 @@
+﻿<h3>All Bugs</h3>
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Priority</td>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Bugs)
+        {
+            <tr>
+                <td>@b.Id</td>
+            </tr>
+            <tr>
+                <td>@b.Title</td>
+            </tr>
+            <tr>
+                <td>@b.Description</td>
+            </tr>
+            <tr>
+                <td>@b.Priority</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    [Inject]
+    public IBugService BugService { get; set; }
+
+    public List<Bug> Bugs { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Bugs = BugService.GetBugs().OrderBy(b=>b.Priority).ToList();
+    }
+}
