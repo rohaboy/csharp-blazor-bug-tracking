@@ -22,7 +22,7 @@ namespace M6_BugTrackerUI.Tests.DisplayBugsUsingComponent
                 + Path.DirectorySeparatorChar + "Components"
                 + Path.DirectorySeparatorChar + "BugList.razor";
 
-            Assert.True(File.Exists(filePath), "`BugList.razor` should exist in the Pages folder.");
+            Assert.True(File.Exists(filePath), "`BugList.razor` should exist in the Pages folder."); //This is not correct message. The component is in 'Components' folder
 
             string file;
             using (var streamReader = new StreamReader(filePath))
